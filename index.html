@@ -1,0 +1,37 @@
+<body>
+    <p id="tit">QRMemGame</p>
+    <p id="m">Moves:0</p>
+  <div id="b"></div>
+  <a id="r" href="#">Restart</a>
+  <script>
+    let e = ['🔥', '📷', '🚀', '🍎', '🐷', '🎸', '🎠', '🎨'], c, f = [], m = 0, p = 0, l = 0, b = document.getElementById('b'), md = document.getElementById('m');
+    const sh = a => a.sort(() => Math.random() - 0.5), i = () => { c = sh([...e, ...e]); m = p = l = 0; f = []; md.textContent = "Moves: 0"; r(); };
+    const r = () => { b.innerHTML = ''; c.forEach((x, i) => { let d = document.createElement('div'); d.className = 'crd'; d.innerHTML = `<div class="f">${x}</div><div class="b"></div>`; d.onclick = () => fl(d, i); b.appendChild(d); }); };
+    const fl = (d, i) => { if (l || d.classList.contains('fl')) return; d.classList.add('fl'); f.push({ d, i }); if (f.length === 2) cm(); };
+    const cm = () => { m++; md.textContent = `Moves: ${m}`; let [a, b] = f, mt = c[a.i] === c[b.i]; l = 1; setTimeout(() => { if (!mt) a.d.classList.remove('fl'), b.d.classList.remove('fl'); else if (++p === e.length) alert('You Win!'); f = []; l = 0; }, 1e3); };
+    document.getElementById('r').onclick = i; i();
+  </script>
+</body>
+<style>
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 20px;
+  }
+  #tit{font-size: 30px;}
+  #b { display: grid; grid-template-columns: repeat(4, 50px); gap: 5px; }
+  .crd { width: 50px; height: 50px; position: relative;}
+  .f, .b { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; backface-visibility: hidden; transition: all 0.3s; }
+  .f { background: #fff; transform: rotateY(180deg); }
+  .b { background: #ccc; }
+  .crd.fl .b { transform: rotateY(180deg); }
+  .crd.fl .f { transform: rotateY(0); }
+  a{
+    background-color: #ccc;
+    padding: 5px 8px;
+    color: black;
+  }
+</style>
