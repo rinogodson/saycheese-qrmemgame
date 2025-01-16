@@ -4,12 +4,7 @@
   <div id="b"></div>
   <a id="r" href="#">Restart</a>
   <script>
-    let e = ['🔥', '📷', '🚀', '🍎', '🐷', '🎸', '🎠', '🎨'], c, f = [], m = 0, p = 0, l = 0, b = document.getElementById('b'), md = document.getElementById('m');
-    const sh = a => a.sort(() => Math.random() - 0.5), i = () => { c = sh([...e, ...e]); m = p = l = 0; f = []; md.textContent = "Moves: 0"; r(); };
-    const r = () => { b.innerHTML = ''; c.forEach((x, i) => { let d = document.createElement('div'); d.className = 'crd'; d.innerHTML = `<div class="f">${x}</div><div class="b"></div>`; d.onclick = () => fl(d, i); b.appendChild(d); }); };
-    const fl = (d, i) => { if (l || d.classList.contains('fl')) return; d.classList.add('fl'); f.push({ d, i }); if (f.length === 2) cm(); };
-    const cm = () => { m++; md.textContent = `Moves: ${m}`; let [a, b] = f, mt = c[a.i] === c[b.i]; l = 1; setTimeout(() => { if (!mt) a.d.classList.remove('fl'), b.d.classList.remove('fl'); else if (++p === e.length) alert('You Win!'); f = []; l = 0; }, 1e3); };
-    document.getElementById('r').onclick = i; i();
+      let e, t = ["🔥", "📷", "🚀", "🍎", "🐷", "🎸", "🎠", "🎨"], n = [], l = 0, s = 0, d = 0, o = document.getElementById("b"), c = document.getElementById("m"); const i = () => { var o; o = [...t, ...t], e = o.sort(() => Math.random() - .5), l = s = d = 0, n = [], c.textContent = "Moves: 0", a() }, a = () => { o.innerHTML = "", e.forEach((e, t) => { let n = document.createElement("div"); n.className = "crd", n.innerHTML = `<div class="f">${e}</div><div class="b"></div>`, n.onclick = () => m(n, t), o.appendChild(n) }) }, m = (e, t) => { d || e.classList.contains("fl") || (e.classList.add("fl"), n.push({ d: e, i: t }), 2 === n.length && r()) }, r = () => { l++, c.textContent = "Moves: " + l; let [o, i] = n, a = e[o.i] === e[i.i]; d = 1, setTimeout(() => { a ? ++s === t.length && alert("You Win!") : (o.d.classList.remove("fl"), i.d.classList.remove("fl")), n = [], d = 0 }, 1e3) }; document.getElementById("r").onclick = i, i()
   </script>
 </body>
 <style>
